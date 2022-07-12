@@ -1,0 +1,23 @@
+.header {
+  padding: 30px 50px;
+  display: flex;
+  justify-content: space-between;
+  &__nav {
+    width: 10%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  &__total {
+    width: 120px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+hr {
+  border-top: 1px solid hwb(0 57% 43%);
+  width: 90%;
+  margin-top: 20px;
+  margin: 0 auto;
+}

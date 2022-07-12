@@ -1,0 +1,47 @@
+@import './variables';
+@import './libs/normalize';
+@import './components/all';
+
+body {
+  background-color: $background;
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.content {
+  padding: 40px 20px;
+  &__shop {
+    display: flex;
+  }
+  .list-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    border: 1px solid $black;
+    border-radius: 30px;
+    margin-left: 50px;
+    width: 70%;
+  }
+  &__cart {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    .cart-list {
+      display: flex;
+      height: 550px;
+      overflow: auto;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
