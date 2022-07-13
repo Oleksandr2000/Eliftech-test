@@ -34,7 +34,7 @@ const CartItem = ({ id, name, logo, price, count }) => {
       <div className="cart-item__info">
         <div className="cart-item__descr">
           <div className="cart-item__title">{name}</div>
-          <div className="cart-item__price">{price}</div>
+          <div className="cart-item__price">{price} $</div>
         </div>
         <div className="cart-item__count">
           <span className="button--circle" onClick={onClickMinus}>

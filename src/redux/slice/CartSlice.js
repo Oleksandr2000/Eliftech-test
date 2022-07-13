@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { calcTotalPrice } from '../../services/calcTotalPrice';
 
 const initialState = {
-  totalPrice: calcTotalPrice(JSON.parse(localStorage.getItem('cart'))) || 0,
+  totalPrice: calcTotalPrice(
+    !localStorage.getItem('cart') ? [] : JSON.parse(localStorage.getItem('cart')),
+  ),
   cartItems: JSON.parse(localStorage.getItem('cart')) || [],
   orderSucces: false,
   orderError: false,

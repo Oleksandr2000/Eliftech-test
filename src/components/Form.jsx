@@ -10,8 +10,16 @@ import {
 } from '../redux/slice/CartSlice';
 
 const Form = () => {
-  const { totalPrice, order } = useSelector((state) => state.cart);
+  const { totalPrice, cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+  const order = cartItems.map((item) => {
+    return {
+      name: item.name,
+      price: item.price,
+      count: item.count,
+    };
+  });
 
   const RegistryForm = useFormik({
     initialValues: {
@@ -34,7 +42,7 @@ const Form = () => {
     onSubmit: (values) => {
       try {
         axios
-          .post('https://6290c0cf27f4ba1c65c0f6cc.mockapi.io/order', {
+          .post('http://localhost:4000/order', {
             values,
             order,
           })
