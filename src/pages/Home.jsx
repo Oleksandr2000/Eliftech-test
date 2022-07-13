@@ -18,16 +18,12 @@ const Home = () => {
 
   const [shops, setShops] = React.useState([]);
   const [items, setItems] = React.useState([]);
-  //'http://localhost:4000/shops'
   React.useEffect(() => {
     axios.get(`http://localhost:4000/shops`).then((res) => {
-      console.log('res.data', res.data);
       shopHandler(res.data);
-      // setShops(res.data);
     });
   }, []);
 
-  // `http://localhost:4000/items/${shopId}`
   const getItemsShop = async (shopId) => {
     const storageCart = JSON.parse(localStorage.getItem('cart'));
     if (
@@ -45,7 +41,7 @@ const Home = () => {
         <Shops shops={shops} getItemsShop={getItemsShop} />
         <div className="list-item">
           {items.map((item) => (
-            <ShopItem {...item} />
+            <ShopItem {...item} key={item.id} />
           ))}
         </div>
       </div>

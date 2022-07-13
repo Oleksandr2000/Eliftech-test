@@ -21,7 +21,7 @@ const ShopItem = ({ name, id, price, logo, shop }) => {
   };
 
   return (
-    <div className="shop-item" key={id}>
+    <div className="shop-item">
       <img src={logo} alt="products" />
       <h4>{name}</h4>
       <div className="shop-item--price">

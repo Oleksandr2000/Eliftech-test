@@ -16,14 +16,12 @@ const shopSlice = createSlice({
       state.enabledShopsById = newShopsById;
     },
     disabledShops(state, action) {
-      console.log('state.enabledShopsById', state.enabledShopsById);
       const enabledShopsKeys = Object.keys(state.enabledShopsById);
       enabledShopsKeys.forEach((item) => {
         if (item === action.payload) {
           state.enabledShopsById[item] = false;
         } else state.enabledShopsById[item] = true;
       });
-      console.log('enabledShopsKeys', enabledShopsKeys);
     },
   },
 });
