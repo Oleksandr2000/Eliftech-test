@@ -42,7 +42,7 @@ const Form = () => {
     onSubmit: (values) => {
       try {
         axios
-          .post('http://localhost:4000/order', {
+          .post('https://secret-thicket-78317.herokuapp.com/order', {
             values,
             order,
           })

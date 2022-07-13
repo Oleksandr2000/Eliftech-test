@@ -19,7 +19,7 @@ const Home = () => {
   const [shops, setShops] = React.useState([]);
   const [items, setItems] = React.useState([]);
   React.useEffect(() => {
-    axios.get(`http://localhost:4000/shops`).then((res) => {
+    axios.get('https://secret-thicket-78317.herokuapp.com/shops').then((res) => {
       shopHandler(res.data);
     });
   }, []);
@@ -31,7 +31,9 @@ const Home = () => {
       !storageCart ||
       !storageCart.length
     ) {
-      await axios.get(`http://localhost:4000/items/${shopId}`).then((res) => setItems(res.data));
+      await axios
+        .get(`https://secret-thicket-78317.herokuapp.com/items/${shopId}`)
+        .then((res) => setItems(res.data));
     }
   };
 
