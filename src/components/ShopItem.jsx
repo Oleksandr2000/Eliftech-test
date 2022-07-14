@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/slice/CartSlice';
 import { disabledShops } from '../redux/slice/ShopSlice';
 
