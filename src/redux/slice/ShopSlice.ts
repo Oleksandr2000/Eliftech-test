@@ -18,11 +18,9 @@ const shopSlice = createSlice({
         newShopsById[item.id] = false;
       });
       state.enabledShopsById = newShopsById;
-      console.log('newShopsById', newShopsById);
     },
     disabledShops(state, action) {
       const enabledShopsKeys = Object.keys(state.enabledShopsById);
-      console.log('enabledShopsKeys;', enabledShopsKeys);
       enabledShopsKeys.forEach((item: string) => {
         if (item === action.payload) {
           state.enabledShopsById[+item] = false;
