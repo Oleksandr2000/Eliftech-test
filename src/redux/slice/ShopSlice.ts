@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  enabledShopsById: null,
+interface ShopSliceState {
+  enabledShopsById: boolean[];
+}
+
+const initialState: ShopSliceState = {
+  enabledShopsById: [],
 };
 
 const shopSlice = createSlice({
@@ -9,18 +13,20 @@ const shopSlice = createSlice({
   initialState,
   reducers: {
     setEnabledShop(state, action) {
-      const newShopsById = {};
-      action.payload.forEach((item) => {
+      const newShopsById: boolean[] = [];
+      action.payload.forEach((item: { id: number }) => {
         newShopsById[item.id] = false;
       });
       state.enabledShopsById = newShopsById;
+      console.log('newShopsById', newShopsById);
     },
     disabledShops(state, action) {
       const enabledShopsKeys = Object.keys(state.enabledShopsById);
-      enabledShopsKeys.forEach((item) => {
+      console.log('enabledShopsKeys;', enabledShopsKeys);
+      enabledShopsKeys.forEach((item: string) => {
         if (item === action.payload) {
-          state.enabledShopsById[item] = false;
-        } else state.enabledShopsById[item] = true;
+          state.enabledShopsById[+item] = false;
+        } else state.enabledShopsById[+item] = true;
       });
     },
   },

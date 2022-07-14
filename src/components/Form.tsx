@@ -8,12 +8,19 @@ import {
   orderStatusError,
   removeOrderStatus,
 } from '../redux/slice/CartSlice';
+import React from 'react';
 
-const Form = () => {
-  const { totalPrice, cartItems } = useSelector((state) => state.cart);
+const Form: React.FC = () => {
+  const { totalPrice, cartItems } = useSelector((state: any) => state.cart);
   const dispatch = useDispatch();
 
-  const order = cartItems.map((item) => {
+  type Order = {
+    name: string;
+    price: number;
+    count: number;
+  };
+
+  const order = cartItems.map((item: Order) => {
     return {
       name: item.name,
       price: item.price,
@@ -100,12 +107,12 @@ const Form = () => {
       </div>
 
       <div className="form-item">
-        <label htmlFor="city">Ваш email</label>
+        <label htmlFor="email">Ваш email</label>
         <input
           id="email"
           name="email"
           type="email"
-          value={RegistryForm.values.city}
+          value={RegistryForm.values.email}
           onChange={RegistryForm.handleChange}
           onBlur={RegistryForm.handleBlur}
         />

@@ -1,11 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CartItemType } from '../../components/CartItem';
 import { calcTotalPrice } from '../../services/calcTotalPrice';
+import { getLocalStoregeCart } from '../../services/getLocalStorage';
 
-const initialState = {
-  totalPrice: calcTotalPrice(
-    !localStorage.getItem('cart') ? [] : JSON.parse(localStorage.getItem('cart')),
-  ),
-  cartItems: JSON.parse(localStorage.getItem('cart')) || [],
+interface CarSliseState {
+  totalPrice: number;
+  cartItems: CartItemType[];
+  orderSucces: boolean;
+  orderError: boolean;
+}
+
+const { products, totalPrice } = getLocalStoregeCart();
+
+const initialState: CarSliseState = {
+  totalPrice: totalPrice,
+  cartItems: products,
   orderSucces: false,
   orderError: false,
 };

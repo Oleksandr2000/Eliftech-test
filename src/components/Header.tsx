@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const Header = () => {
-  const { totalPrice, cartItems } = useSelector((state) => state.cart);
+const Header: React.FC = () => {
+  const { totalPrice, cartItems } = useSelector((state: any) => state.cart);
   const isMounted = React.useRef(false);
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ const Header = () => {
     isMounted.current = true;
   }, [cartItems]);
 
-  const totalCount = cartItems.reduce((sum, item) => sum + item.count, 0);
+  const totalCount = cartItems.reduce((sum: number, item: any) => sum + item.count, 0);
 
   return (
     <>

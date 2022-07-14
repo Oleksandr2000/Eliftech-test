@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderSucces = () => {
+const OrderSucces: React.FC = () => {
   return (
     <div className="flex flex-col items-center mt-10">
       <h2>Succes!</h2>

@@ -1,9 +1,17 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/slice/CartSlice';
 import { disabledShops } from '../redux/slice/ShopSlice';
 
-const ShopItem = ({ name, id, price, logo, shop }) => {
+export type ShopItemType = {
+  name: string;
+  id: number;
+  price: number;
+  logo: string;
+  shop: number;
+};
+
+const ShopItem: React.FC<ShopItemType> = ({ name, id, price, logo, shop }) => {
   const dispatch = useDispatch();
 
   const onClickAdd = () => {

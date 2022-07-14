@@ -1,14 +1,16 @@
 import React from 'react';
 import Shops from '../components/Shops';
-import ShopItem from '../components/ShopItem';
+import ShopItem, { ShopItemType } from '../components/ShopItem';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { setEnabledShop, disabledShops } from '../redux/slice/ShopSlice';
+import { RootState } from '../redux/store';
 
 const Home = () => {
-  const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
-  const shopHandler = (shopsData) => {
+
+  const shopHandler = (shopsData: any) => {
     dispatch(setEnabledShop(shopsData));
     if (cartItems.length) {
       dispatch(disabledShops(cartItems[0].shop));
@@ -24,8 +26,8 @@ const Home = () => {
     });
   }, []);
 
-  const getItemsShop = async (shopId) => {
-    const storageCart = JSON.parse(localStorage.getItem('cart'));
+  const getItemsShop = async (shopId: number) => {
+    const storageCart = JSON.parse(localStorage.getItem('cart') || '');
     if (
       (Array.isArray(storageCart) && storageCart.length && storageCart[0].shop == shopId) ||
       !storageCart ||
@@ -42,7 +44,7 @@ const Home = () => {
       <div className="content__shop">
         <Shops shops={shops} getItemsShop={getItemsShop} />
         <div className="list-item">
-          {items.map((item) => (
+          {items.map((item: ShopItemType) => (
             <ShopItem {...item} key={item.id} />
           ))}
         </div>

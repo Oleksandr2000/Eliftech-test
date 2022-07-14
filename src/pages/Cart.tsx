@@ -5,9 +5,10 @@ import { useSelector } from 'react-redux';
 import CartEmpty from '../components/CartEmpty';
 import OrderSucces from '../components/OrderSucces';
 import OrderError from '../components/OrderError';
+import { CartItemType } from '../components/CartItem';
 
-const Cart = () => {
-  const { cartItems, orderSucces, orderError } = useSelector((state) => state.cart);
+const Cart: React.FC = () => {
+  const { cartItems, orderSucces, orderError } = useSelector((state: any) => state.cart);
 
   if (orderSucces && cartItems.length < 1) {
     return <OrderSucces />;
@@ -27,7 +28,7 @@ const Cart = () => {
             <Form />
           </div>
           <div className="cart-list">
-            {cartItems.map((item) => (
+            {cartItems.map((item: CartItemType) => (
               <CartItem {...item} key={item.id} />
             ))}
           </div>

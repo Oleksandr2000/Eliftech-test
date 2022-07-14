@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CartEmpty = () => {
+const CartEmpty: React.FC = () => {
   return (
     <div className="flex flex-col items-center">
       <h2>Cart is Empty</h2>
